@@ -1,0 +1,3230 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+          <script>
+        $(function() {
+            setupLanguages(["bash","javascript"]);
+        });
+      </script>
+      </head>
+
+  <body class="">
+    <div class="wrapper">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <img src="images/logo.png" />
+                    <div class="lang-selector">
+                                  <a href="#" data-language-name="bash">bash</a>
+                                  <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+                            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="Search">
+            </div>
+            <ul class="search-results"></ul>
+              <div id="toc">
+      </div>
+                    <ul class="toc-footer">
+                                  <li><a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a></li>
+                            </ul>
+            </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <!-- START_INFO -->
+<h1>Info</h1>
+<p>Welcome to the generated API reference.</p>
+<!-- END_INFO -->
+<h1>Authentification</h1>
+<p>APIs for managing authentification</p>
+<!-- START_44652685eefa8022f19b92a3ce78d990 -->
+<h2>Login</h2>
+<p>login user and create access token</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/auth/login" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"email":"KwVDqm3LYcYGXima","password":"x1h9wkkyAQSuurcx","client_id":"m8wCJsXCjwQnoKpr","client_secret":"OL4YeMbOPwAgR7V5","device_imei":"G1AD0K5C4GkckOvE"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/auth/login");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+let body = {
+    "email": "KwVDqm3LYcYGXima",
+    "password": "x1h9wkkyAQSuurcx",
+    "client_id": "m8wCJsXCjwQnoKpr",
+    "client_secret": "OL4YeMbOPwAgR7V5",
+    "device_imei": "G1AD0K5C4GkckOvE"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "token_type": "Bearer",
+    "expires_in": "Integer",
+    "access_token": "String",
+    "refresh_token": "String"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST auth/login</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>required</td>
+<td>The e-mail of the user.</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>required</td>
+<td>The password of the user.</td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>string</td>
+<td>required</td>
+<td>The id of used platform.</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>string</td>
+<td>required</td>
+<td>The secret pass code of used platform.</td>
+</tr>
+<tr>
+<td>device_imei</td>
+<td>string</td>
+<td>optional</td>
+<td>optional Only if the user is not an admin.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_44652685eefa8022f19b92a3ce78d990 -->
+<!-- START_a4c0709f3df307737a90fa96aa40fa31 -->
+<h2>Refresh</h2>
+<p>Extend the duration of authentification sessions</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/auth/refresh" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"refresh_token":"o2CzZbnP0pPGXVIM","client_id":"OgeS2Q31H0zKptl9","client_secret":"QkLC6A2I8KcFlWPW"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/auth/refresh");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+let body = {
+    "refresh_token": "o2CzZbnP0pPGXVIM",
+    "client_id": "OgeS2Q31H0zKptl9",
+    "client_secret": "QkLC6A2I8KcFlWPW"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "token_type": "Bearer",
+    "expires_in": "Integer",
+    "access_token": "String",
+    "refresh_token": "String"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST auth/refresh</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>refresh_token</td>
+<td>string</td>
+<td>required</td>
+<td>The refresh token provided when logged-in.</td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>string</td>
+<td>required</td>
+<td>The id of used platform.</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>string</td>
+<td>required</td>
+<td>The secret pass code of used platform.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_a4c0709f3df307737a90fa96aa40fa31 -->
+<!-- START_7ac06ca44d2f051c325ec79032d7ccad -->
+<h2>Logout</h2>
+<p>Revoke the access token</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/auth/logout" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/auth/logout");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Successfully logged out"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET auth/logout</code></p>
+<!-- END_7ac06ca44d2f051c325ec79032d7ccad -->
+<!-- START_b25bea9b921111447db41e83ca0f4564 -->
+<h2>Account</h2>
+<p>Get the authenticated User</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/auth/user" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/auth/user");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "id": "integer",
+    "name": "string",
+    "email": "string",
+    "approved": "integer",
+    "role": "integer",
+    "created_at": "Timestamp",
+    "updated_at": "Timestamp"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET auth/user</code></p>
+<!-- END_b25bea9b921111447db41e83ca0f4564 -->
+<!-- START_961fec832b62cbba5d4c04d71169b36b -->
+<h2>Privileges</h2>
+<p>Get the privileges of the authenticated User</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/auth/privileges" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/auth/privileges");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "user_id": "integer",
+    "role": "integer",
+    "client_id": "integer",
+    "hotel_id": "array",
+    "device_imei": "string"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET auth/privileges</code></p>
+<!-- END_961fec832b62cbba5d4c04d71169b36b -->
+<h1>Device</h1>
+<p>APIs for managing device</p>
+<!-- START_5cf5d85b4b7fc15783f184f7d2456f84 -->
+<h2>Columns</h2>
+<p>Display the possible fields of Device.</p>
+<p>These fields can also be used to filter the search.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/device/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/device/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET device/columns</code></p>
+<!-- END_5cf5d85b4b7fc15783f184f7d2456f84 -->
+<!-- START_2ab314387cb0d975e7259ee2ca28cc47 -->
+<h2>Index</h2>
+<p>Display a listing of device.</p>
+<p>To filter devices, add any of the Device object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/devices" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/devices");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET devices</code></p>
+<!-- END_2ab314387cb0d975e7259ee2ca28cc47 -->
+<!-- START_b63ce50912495dff099f0a94cb25611b -->
+<h2>Contacts</h2>
+<p>Display a listing of rooms and relative phone number within the same hotel.</p>
+<p>To filter devices, add any of the Device object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/devices/contacts" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/devices/contacts");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET devices/contacts</code></p>
+<!-- END_b63ce50912495dff099f0a94cb25611b -->
+<!-- START_9bf55187824ff92cc42f1be52e862ab6 -->
+<h2>Show</h2>
+<p>Display the specified App by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/device/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/device/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET device/{id}</code></p>
+<!-- END_9bf55187824ff92cc42f1be52e862ab6 -->
+<!-- START_97c416ac9711e2e82970c65041a354f0 -->
+<h2>Store</h2>
+<p>Create a new Device.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/device" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/device");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST device</code></p>
+<!-- END_97c416ac9711e2e82970c65041a354f0 -->
+<!-- START_f3a4c9a4aa5a85de90ccb563c5ee91a5 -->
+<h2>Update</h2>
+<p>Edit properties of existing Device.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/device/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/device/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT device/{id}</code></p>
+<!-- END_f3a4c9a4aa5a85de90ccb563c5ee91a5 -->
+<!-- START_1f2958855b6c9625ba7752984661c391 -->
+<h2>Link to room</h2>
+<p>Switch the room to where a device is linked.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/deviceRoomSwitch/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"room_id":7}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/deviceRoomSwitch/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+let body = {
+    "room_id": 7
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT deviceRoomSwitch/{id}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>room_id</td>
+<td>integer</td>
+<td>optional</td>
+<td>If 'room_id' equales <b>Null</b> or <b>0</b> or if 'room_id' does not belong to same Hotel as the device, the result will be a device with no link to any room..</td>
+</tr>
+</tbody>
+</table>
+<!-- END_1f2958855b6c9625ba7752984661c391 -->
+<!-- START_43db6117efdd1c5ef78d27b19cf18992 -->
+<h2>Link to tourist</h2>
+<p>Switch the tourist to where a device is linked.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/deviceTouristSwitch/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"tourist_id":2}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/deviceTouristSwitch/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+let body = {
+    "tourist_id": 2
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT deviceTouristSwitch/{id}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tourist_id</td>
+<td>integer</td>
+<td>optional</td>
+<td>If 'tourist_id' equales <b>Null</b> or <b>0</b> or if 'tourist_id' does not belong to same Hotel as the device, the result will be a device with no link to any tourist..</td>
+</tr>
+</tbody>
+</table>
+<!-- END_43db6117efdd1c5ef78d27b19cf18992 -->
+<!-- START_98df8edf5efda6f14eef2f72ae7d1a92 -->
+<h2>Destroy</h2>
+<p>Remove an Device.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/device/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/device/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE device/{id}</code></p>
+<!-- END_98df8edf5efda6f14eef2f72ae7d1a92 -->
+<h1>DeviceRooms</h1>
+<p>APIs for managing relation between devices and rooms</p>
+<!-- START_ddc1ff1f45d0c35bf6c62b2efcea5fe5 -->
+<h2>Columns</h2>
+<p>Display the possible fields of DeviceRoom.</p>
+<p>These fields can also be used to filter the search.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/device_room/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/device_room/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET device_room/columns</code></p>
+<!-- END_ddc1ff1f45d0c35bf6c62b2efcea5fe5 -->
+<!-- START_75acf7ed8441c00a77aa840d7ffb0d22 -->
+<h2>Index</h2>
+<p>Display a listing of device-room relations.</p>
+<p>To filter device rooms, add any of the DeviceRoom object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/device_rooms" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/device_rooms");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET device_rooms</code></p>
+<!-- END_75acf7ed8441c00a77aa840d7ffb0d22 -->
+<!-- START_21244281a0fbce1bd03713c7fe89a950 -->
+<h2>Show</h2>
+<p>Display the specified App by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/device_room/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/device_room/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET device_room/{id}</code></p>
+<!-- END_21244281a0fbce1bd03713c7fe89a950 -->
+<!-- START_bffebdfb88a1113ce01902ca7233df16 -->
+<h2>Store</h2>
+<p>Create a new DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/device_room" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/device_room");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST device_room</code></p>
+<!-- END_bffebdfb88a1113ce01902ca7233df16 -->
+<!-- START_0e6b324f669dae48a8fae4de3edcc7cb -->
+<h2>Destroy</h2>
+<p>Remove an DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/device_room/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/device_room/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE device_room/{id}</code></p>
+<!-- END_0e6b324f669dae48a8fae4de3edcc7cb -->
+<h1>ExtraPosts</h1>
+<p>APIs for managing posts outside hotels</p>
+<!-- START_bffb805bf187be7bf3ed42c422c0b720 -->
+<h2>Columns</h2>
+<p>Display the possible fields of ExtraPost.</p>
+<p>These fields can also be used to filter the search.</p>
+<ul>
+<li><b>Please note: </b> the property 'post_type' refers to the template
+used for the ExtraPost, which can override a ExtraPost.property's default
+value or force it to be required.</li>
+</ul>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/extra_post/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_post/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET extra_post/columns</code></p>
+<!-- END_bffb805bf187be7bf3ed42c422c0b720 -->
+<!-- START_8b4b92797326391c102d77c9b9f8780f -->
+<h2>Index</h2>
+<p>Display a listing Extra posts.</p>
+<p>To filter Extra posts, add any of the ExtraPost object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/extra_posts" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_posts");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET extra_posts</code></p>
+<!-- END_8b4b92797326391c102d77c9b9f8780f -->
+<!-- START_bf17e1c6c0327e71c2b2e50b413bcb26 -->
+<h2>Show</h2>
+<p>Display the specified ExtraPost by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/extra_post/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_post/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET extra_post/{id}</code></p>
+<!-- END_bf17e1c6c0327e71c2b2e50b413bcb26 -->
+<!-- START_c0c93c0c25048b997aed57f6591183c9 -->
+<h2>extra_post</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/extra_post" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_post");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST extra_post</code></p>
+<!-- END_c0c93c0c25048b997aed57f6591183c9 -->
+<!-- START_969eab7c4313eeb33eebf0420be56358 -->
+<h2>Update</h2>
+<p>Edit properties of existing ExtraPost.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/extra_post/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_post/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT extra_post/{id}</code></p>
+<!-- END_969eab7c4313eeb33eebf0420be56358 -->
+<!-- START_f7b655802534aa7afaf137548a90a3fd -->
+<h2>Multi-Update</h2>
+<p>Edit properties of multiple existing ExtraPost.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/extra_posts" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_posts");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT extra_posts</code></p>
+<!-- END_f7b655802534aa7afaf137548a90a3fd -->
+<!-- START_e1f85f1a9ee68781288f7a02be6bf8e2 -->
+<h2>Destroy</h2>
+<p>Remove an ExtraPost.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/extra_post/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_post/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE extra_post/{id}</code></p>
+<!-- END_e1f85f1a9ee68781288f7a02be6bf8e2 -->
+<!-- START_9cd23f192a5e5db529fd1772f10b39da -->
+<h2>Seen</h2>
+<p>Increment the property &#039;nbr_views&#039; of an ExtraPost by 1.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/extra_post/{id}/seen" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_post/{id}/seen");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT extra_post/{id}/seen</code></p>
+<!-- END_9cd23f192a5e5db529fd1772f10b39da -->
+<!-- START_df9c5572639e4a4b1b0f20b7de8cec45 -->
+<h2>Click</h2>
+<p>Increment the property &#039;nbr_clicks&#039; of an ExtraPost by 1.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/extra_post/{id}/click" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_post/{id}/click");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT extra_post/{id}/click</code></p>
+<!-- END_df9c5572639e4a4b1b0f20b7de8cec45 -->
+<h1>ExtraPostsTranslates</h1>
+<p>APIs for managing translations of posts outside hotels</p>
+<!-- START_e44fde9a7d7c7b1ef4b556ffb6fc0160 -->
+<h2>Columns</h2>
+<p>Display the possible fields of ExtraPostsTranslate.</p>
+<p>These fields can also be used to filter the search.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/extra_posts_translate/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_posts_translate/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET extra_posts_translate/columns</code></p>
+<!-- END_e44fde9a7d7c7b1ef4b556ffb6fc0160 -->
+<!-- START_3e8ea535649c9f4e0e8a6054589e050d -->
+<h2>Index</h2>
+<p>Display a listing of Extra posts translates.</p>
+<p>To filter Extra posts translates, add any of the ExtraPostTranslate object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/extra_posts_translates" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_posts_translates");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET extra_posts_translates</code></p>
+<!-- END_3e8ea535649c9f4e0e8a6054589e050d -->
+<!-- START_6ce31ab7171e3c6f969e42250115479f -->
+<h2>Show</h2>
+<p>Display the specified App by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/extra_posts_translate/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_posts_translate/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET extra_posts_translate/{id}</code></p>
+<!-- END_6ce31ab7171e3c6f969e42250115479f -->
+<!-- START_be58c5a43cd258a470342e5936ce4256 -->
+<h2>Store</h2>
+<p>Create a new ExtraPostsTranslate.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/extra_posts_translate" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_posts_translate");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST extra_posts_translate</code></p>
+<!-- END_be58c5a43cd258a470342e5936ce4256 -->
+<!-- START_454c11ecb05964ed5e97eaa75c95cb35 -->
+<h2>Update</h2>
+<p>Edit properties of existing DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/extra_posts_translate/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_posts_translate/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT extra_posts_translate/{id}</code></p>
+<!-- END_454c11ecb05964ed5e97eaa75c95cb35 -->
+<!-- START_5edf409c01a6fd8b96106c1d54c8ba74 -->
+<h2>Destroy</h2>
+<p>Remove an DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/extra_posts_translate/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/extra_posts_translate/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE extra_posts_translate/{id}</code></p>
+<!-- END_5edf409c01a6fd8b96106c1d54c8ba74 -->
+<h1>Hotel</h1>
+<p>APIs for managing hotels</p>
+<!-- START_f588bb22b8ac60d5136714492148ffde -->
+<h2>Columns</h2>
+<p>Display the possible fields of Hotel.</p>
+<p>These fields can also be used to filter the search.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/hotel/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/hotel/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET hotel/columns</code></p>
+<!-- END_f588bb22b8ac60d5136714492148ffde -->
+<!-- START_80e4eaeee3688f766803b4bfead371af -->
+<h2>Index</h2>
+<p>Display a listing of hotels.</p>
+<p>To filter hotels, add any of the Hotel object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/hotels" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/hotels");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET hotels</code></p>
+<!-- END_80e4eaeee3688f766803b4bfead371af -->
+<!-- START_c1d91ad71e9c5b9c50cde84c5ca5694e -->
+<h2>Show</h2>
+<p>Display the specified App by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/hotel/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/hotel/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET hotel/{id}</code></p>
+<!-- END_c1d91ad71e9c5b9c50cde84c5ca5694e -->
+<!-- START_7a52b53c24c11eb99e055b5a229b8913 -->
+<h2>Store</h2>
+<p>Create a new Hotel.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/hotel" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/hotel");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST hotel</code></p>
+<!-- END_7a52b53c24c11eb99e055b5a229b8913 -->
+<!-- START_77c7d40271296c2682ab701c89beaf96 -->
+<h2>Update</h2>
+<p>Edit properties of existing DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/hotel/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/hotel/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT hotel/{id}</code></p>
+<!-- END_77c7d40271296c2682ab701c89beaf96 -->
+<!-- START_f27701eb8ce6d009964298dec5e9d79d -->
+<h2>Destroy</h2>
+<p>Remove an DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/hotel/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/hotel/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE hotel/{id}</code></p>
+<!-- END_f27701eb8ce6d009964298dec5e9d79d -->
+<h1>Notifications</h1>
+<p>APIs for managing notifications</p>
+<!-- START_d8e850ae4d203ccf3d17ba0c97c43cde -->
+<h2>Columns</h2>
+<p>Display the possible fields of a Notification.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/notif_structure" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/notif_structure");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET notif_structure</code></p>
+<!-- END_d8e850ae4d203ccf3d17ba0c97c43cde -->
+<!-- START_c1e72ead638ee06a29280d5e447a28f5 -->
+<h2>Send a notification</h2>
+<p>Create a notification and send it to target Device(s).</p>
+<p>Filtering target devices is exactly the same way as searching for devices using filters.
+To filter target devices, add any of the Device object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/notif_hotels_devices" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/notif_hotels_devices");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST notif_hotels_devices</code></p>
+<!-- END_c1e72ead638ee06a29280d5e447a28f5 -->
+<h1>PostTypes</h1>
+<p>APIs for managing templates of posts</p>
+<!-- START_844ee3b86207b8ce2448e3c66131cfc6 -->
+<h2>Columns</h2>
+<p>Display the possible fields of PostType.</p>
+<p>These fields can also be used to filter the search.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/post_type/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/post_type/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET post_type/columns</code></p>
+<!-- END_844ee3b86207b8ce2448e3c66131cfc6 -->
+<!-- START_aa46235c7eb2b887fe3f1439a64d43fb -->
+<h2>Index</h2>
+<p>Display a listing of posts templates.</p>
+<p>To filter posts templates, add any of the PostType object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/post_types" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/post_types");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET post_types</code></p>
+<!-- END_aa46235c7eb2b887fe3f1439a64d43fb -->
+<!-- START_a1d8b366fa85e7d880b9a27e4b2103ea -->
+<h2>Show</h2>
+<p>Display the specified App by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/post_type/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/post_type/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET post_type/{id}</code></p>
+<!-- END_a1d8b366fa85e7d880b9a27e4b2103ea -->
+<!-- START_3251b54a32a2a549abca71b1dcd78b2f -->
+<h2>Store</h2>
+<p>Create a new PostType.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/post_type" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/post_type");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST post_type</code></p>
+<!-- END_3251b54a32a2a549abca71b1dcd78b2f -->
+<!-- START_3b44c4109be518601e924274d6882bdf -->
+<h2>Update</h2>
+<p>Edit properties of existing DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/post_type/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/post_type/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT post_type/{id}</code></p>
+<!-- END_3b44c4109be518601e924274d6882bdf -->
+<!-- START_f3024d586dbdb680486de290405cc87e -->
+<h2>Destroy</h2>
+<p>Remove an DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/post_type/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/post_type/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE post_type/{id}</code></p>
+<!-- END_f3024d586dbdb680486de290405cc87e -->
+<h1>Posts</h1>
+<p>APIs for managing posts that belongs in the hotels</p>
+<!-- START_f6e6a8f63fa88c10a810d956287115f7 -->
+<h2>Columns</h2>
+<p>Display the possible fields of Post.</p>
+<p>These fields can also be used to filter the search.</p>
+<ul>
+<li><b>Please note: </b> the property 'post_type' refers to the template
+used for the post, which can override a post.property's default
+value or force it to be required.</li>
+</ul>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/post/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/post/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET post/columns</code></p>
+<!-- END_f6e6a8f63fa88c10a810d956287115f7 -->
+<!-- START_b50fbd1dc666341a0aba5436344a60d9 -->
+<h2>Index</h2>
+<p>Display a listing of posts.</p>
+<p>To filter posts, add any of the Post object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/posts" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/posts");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET posts</code></p>
+<!-- END_b50fbd1dc666341a0aba5436344a60d9 -->
+<!-- START_afe2787ea395275b46eb1ce2380cd9a0 -->
+<h2>Show</h2>
+<p>Display the specified App by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/post/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/post/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET post/{id}</code></p>
+<!-- END_afe2787ea395275b46eb1ce2380cd9a0 -->
+<!-- START_6bb34778bbf4ff8243bcb491022de63a -->
+<h2>Store</h2>
+<p>Create a new Post.</p>
+<p><b>Please note: </b></p>
+<ul>
+<li>When creating new Post you can pass PostTranslate properties, this will create an english translation for the Post.</li>
+<li>Every Post has at least one translation so providing an english title is required.</li>
+<li>Required fields are defined by the chosen PostType, including the once that belong to the PostTranslate.</li>
+</ul>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/post" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/post");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST post</code></p>
+<!-- END_6bb34778bbf4ff8243bcb491022de63a -->
+<!-- START_645a4195608b74f2da2f351a0a46c520 -->
+<h2>Update</h2>
+<p>Edit properties of existing DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/post/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/post/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT post/{id}</code></p>
+<!-- END_645a4195608b74f2da2f351a0a46c520 -->
+<!-- START_2ce059c7088f98d376b746b52a11e0d7 -->
+<h2>Multi-Update</h2>
+<p>Edit properties of multiple existing Post.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/posts" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/posts");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT posts</code></p>
+<!-- END_2ce059c7088f98d376b746b52a11e0d7 -->
+<!-- START_629779ab47d01268662b313a43e29077 -->
+<h2>Destroy</h2>
+<p>Remove an DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/post/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/post/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE post/{id}</code></p>
+<!-- END_629779ab47d01268662b313a43e29077 -->
+<h1>PostsTranslates</h1>
+<p>APIs for managing translations of posts that belongs in the hotels</p>
+<!-- START_a71d42a03c21d1efb5b60c04f4c81a1b -->
+<h2>Columns</h2>
+<p>Display the possible fields of PostsTranslate.</p>
+<p>These fields can also be used to filter the search.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/posts_translate/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/posts_translate/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET posts_translate/columns</code></p>
+<!-- END_a71d42a03c21d1efb5b60c04f4c81a1b -->
+<!-- START_e56557007b915714ee075d32fe343914 -->
+<h2>Index</h2>
+<p>Display a listing of posts translates.</p>
+<p>To filter posts translate, add any of the PostTranslate object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/posts_translates" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/posts_translates");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET posts_translates</code></p>
+<!-- END_e56557007b915714ee075d32fe343914 -->
+<!-- START_307e20756277eadf5c05776d62e9d3f6 -->
+<h2>Show</h2>
+<p>Display the specified App by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/posts_translate/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/posts_translate/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET posts_translate/{id}</code></p>
+<!-- END_307e20756277eadf5c05776d62e9d3f6 -->
+<!-- START_c818ae418ceccd58247266ab68f8931f -->
+<h2>Store</h2>
+<p>Create a new PostsTranslate.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/posts_translate" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/posts_translate");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST posts_translate</code></p>
+<!-- END_c818ae418ceccd58247266ab68f8931f -->
+<!-- START_fd7b5a3529ba3721405d3d921c9568b4 -->
+<h2>Update</h2>
+<p>Edit properties of existing DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/posts_translate/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/posts_translate/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT posts_translate/{id}</code></p>
+<!-- END_fd7b5a3529ba3721405d3d921c9568b4 -->
+<!-- START_69e668c979e9369d6957e02802ef8e11 -->
+<h2>Destroy</h2>
+<p>Remove an DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/posts_translate/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/posts_translate/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE posts_translate/{id}</code></p>
+<!-- END_69e668c979e9369d6957e02802ef8e11 -->
+<h1>Public</h1>
+<p>APIs for managing requests that doesn't require authentification</p>
+<!-- START_515cba9e41609d341721af816a2f591f -->
+<h2>Dati versions</h2>
+<p>Display all the verions of Dati App.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/dati_app_version" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/dati_app_version");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET dati_app_version</code></p>
+<!-- END_515cba9e41609d341721af816a2f591f -->
+<!-- START_c3471b300943ae219fd2e3c02b9ca943 -->
+<h2>Dati last version</h2>
+<p>Display only the last &#039;Live&#039; verion of Dati App.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/dati_last_version" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/dati_last_version");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET dati_last_version</code></p>
+<!-- END_c3471b300943ae219fd2e3c02b9ca943 -->
+<!-- START_7609a2d501c53fd287dec4034f7cf14c -->
+<h2>Request password reset</h2>
+<p>Send a link to the specified email (if it is registered) allowing the user to reset his/her password.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/password/request" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"email":"uA2ZftMU15veZsrZ","redirect_after_reset":"RH7b0q9IsBTEw6yf"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/password/request");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+let body = {
+    "email": "uA2ZftMU15veZsrZ",
+    "redirect_after_reset": "RH7b0q9IsBTEw6yf"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST password/request</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>required</td>
+<td>The email address of the user that require password reset.</td>
+</tr>
+<tr>
+<td>redirect_after_reset</td>
+<td>URL</td>
+<td>optional</td>
+<td>This will tell the API where to redirect the user after successfully reseted password.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_7609a2d501c53fd287dec4034f7cf14c -->
+<!-- START_cafb407b7a846b31491f97719bb15aef -->
+<h2>Submit new password</h2>
+<p>Change the user password and redirect him/her to the specified link, or return {&#039;message&#039; =&gt; &#039;Success&#039;} if no url is provided.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/password/reset" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/password/reset");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST password/reset</code></p>
+<!-- END_cafb407b7a846b31491f97719bb15aef -->
+<h1>Rooms</h1>
+<p>APIs for managing rooms of hotels</p>
+<!-- START_6c2fa7a6fb13ee5ec73f50d672f5ec20 -->
+<h2>Columns</h2>
+<p>Display the possible fields of Room.</p>
+<p>These fields can also be used to filter the search.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/room/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/room/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET room/columns</code></p>
+<!-- END_6c2fa7a6fb13ee5ec73f50d672f5ec20 -->
+<!-- START_a1b2184064abffa4b42babd2e458ebea -->
+<h2>Index</h2>
+<p>Display a listing of rooms.</p>
+<p>To filter rooms, add any of the Room object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/rooms" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/rooms");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET rooms</code></p>
+<!-- END_a1b2184064abffa4b42babd2e458ebea -->
+<!-- START_b4e373f2a94258f2043428bac37a51be -->
+<h2>Show</h2>
+<p>Display the specified App by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/room/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/room/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET room/{id}</code></p>
+<!-- END_b4e373f2a94258f2043428bac37a51be -->
+<!-- START_ddb21b77ba3ecbec7015e9bb6b9422fe -->
+<h2>Store</h2>
+<p>Create a new Room.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/room" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/room");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST room</code></p>
+<!-- END_ddb21b77ba3ecbec7015e9bb6b9422fe -->
+<!-- START_09c49e144a075ec8e1e450e9621ef561 -->
+<h2>Update</h2>
+<p>Edit properties of existing DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/room/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/room/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT room/{id}</code></p>
+<!-- END_09c49e144a075ec8e1e450e9621ef561 -->
+<!-- START_2bcf81981001b1842981a61483f0d0cd -->
+<h2>Destroy</h2>
+<p>Remove an DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/room/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/room/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE room/{id}</code></p>
+<!-- END_2bcf81981001b1842981a61483f0d0cd -->
+<h1>ShoppingOrders</h1>
+<p>APIs for managing shopping orders</p>
+<!-- START_add82e5e10652a42143a3686a14fec53 -->
+<h2>Columns</h2>
+<p>Display the possible fields of ShoppingOrder.</p>
+<p>These fields can also be used to filter the search.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/shopping_order/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/shopping_order/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET shopping_order/columns</code></p>
+<!-- END_add82e5e10652a42143a3686a14fec53 -->
+<!-- START_afe05b4c59fd8e43c86b555cb8e263e5 -->
+<h2>Index</h2>
+<p>Display a listing of shopping orders.</p>
+<p>To filter shopping orders, add any of the ShoppingOrder object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/shopping_orders" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/shopping_orders");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET shopping_orders</code></p>
+<!-- END_afe05b4c59fd8e43c86b555cb8e263e5 -->
+<!-- START_06a5d894d186c9e1f46b1ed52659266b -->
+<h2>Show</h2>
+<p>Display the specified App by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/shopping_order/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/shopping_order/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET shopping_order/{id}</code></p>
+<!-- END_06a5d894d186c9e1f46b1ed52659266b -->
+<!-- START_6f85b66331e9d543b18b8409049ed059 -->
+<h2>Store</h2>
+<p>Create a new ShoppingOrder.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/shopping_order" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/shopping_order");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST shopping_order</code></p>
+<!-- END_6f85b66331e9d543b18b8409049ed059 -->
+<!-- START_72f97ea6ed3d5900c47b9da7f0769494 -->
+<h2>Update</h2>
+<p>Edit properties of existing DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/shopping_order/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/shopping_order/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT shopping_order/{id}</code></p>
+<!-- END_72f97ea6ed3d5900c47b9da7f0769494 -->
+<!-- START_56f69a46831e85eb22f9b4541d9161d3 -->
+<h2>Destroy</h2>
+<p>Remove an DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/shopping_order/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/shopping_order/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE shopping_order/{id}</code></p>
+<!-- END_56f69a46831e85eb22f9b4541d9161d3 -->
+<h1>Stays</h1>
+<p>APIs for managing stays which represent the relation between a Tourist and DeviceRoom</p>
+<!-- START_e1c4c9233bfd1d2ada5c1ed2ca2a2b3c -->
+<h2>Columns</h2>
+<p>Display the possible fields of Stay.</p>
+<p>These fields can also be used to filter the search.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/stay/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/stay/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET stay/columns</code></p>
+<!-- END_e1c4c9233bfd1d2ada5c1ed2ca2a2b3c -->
+<!-- START_7ec93600986b0513ffb54141bfa58a1c -->
+<h2>Index</h2>
+<p>Display a listing of stays.</p>
+<p>To filter stays, add any of the Stay object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/stays" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/stays");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET stays</code></p>
+<!-- END_7ec93600986b0513ffb54141bfa58a1c -->
+<!-- START_5537b565d5ee022cff682b26abfe4a33 -->
+<h2>Show</h2>
+<p>Display the specified App by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/stay/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/stay/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET stay/{id}</code></p>
+<!-- END_5537b565d5ee022cff682b26abfe4a33 -->
+<!-- START_662c400ea1be1d71b1c283348b3ad4a5 -->
+<h2>Store</h2>
+<p>Create a new Stay.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/stay" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/stay");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST stay</code></p>
+<!-- END_662c400ea1be1d71b1c283348b3ad4a5 -->
+<!-- START_73d7932ebec954c3b9c6243d4441cafd -->
+<h2>Destroy</h2>
+<p>Remove an DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/stay/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/stay/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE stay/{id}</code></p>
+<!-- END_73d7932ebec954c3b9c6243d4441cafd -->
+<h1>Tourists</h1>
+<p>APIs for managing tourists</p>
+<!-- START_0b613b3ad37dcb2d37cc5c14626ef656 -->
+<h2>Columns</h2>
+<p>Display the possible fields of Tourist.</p>
+<p>These fields can also be used to filter the search.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/tourist/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/tourist/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET tourist/columns</code></p>
+<!-- END_0b613b3ad37dcb2d37cc5c14626ef656 -->
+<!-- START_e3af04dfe3145a52a28a66188e65a036 -->
+<h2>Index</h2>
+<p>Display a listing of tourists.</p>
+<p>To filter tourists, add any of the Tourist object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/tourists" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/tourists");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET tourists</code></p>
+<!-- END_e3af04dfe3145a52a28a66188e65a036 -->
+<!-- START_2b29fd02788e5c4edc8a7471e1e75b9d -->
+<h2>Show</h2>
+<p>Display the specified App by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/tourist/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/tourist/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET tourist/{id}</code></p>
+<!-- END_2b29fd02788e5c4edc8a7471e1e75b9d -->
+<!-- START_b582cfb013c26a9e6a95f11b0a4834f6 -->
+<h2>Store</h2>
+<p>Create a new Tourist.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/tourist" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/tourist");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST tourist</code></p>
+<!-- END_b582cfb013c26a9e6a95f11b0a4834f6 -->
+<!-- START_27a5d04128bce45417fed04809926aec -->
+<h2>Update</h2>
+<p>Edit properties of existing DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/tourist/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/tourist/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT tourist/{id}</code></p>
+<!-- END_27a5d04128bce45417fed04809926aec -->
+<!-- START_3e7434f43147082d7b4720f36d6349a8 -->
+<h2>Destroy</h2>
+<p>Remove an DeviceRoom.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/tourist/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/tourist/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE tourist/{id}</code></p>
+<!-- END_3e7434f43147082d7b4720f36d6349a8 -->
+<h1>User</h1>
+<p>APIs for managing users</p>
+<!-- START_89966bfb9ab533cc3249b91a9090d3dc -->
+<h2>Index</h2>
+<p>Display a listing of users.</p>
+<p>To filter users, add any of the user object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/users" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/users");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "integer",
+            "name": "string",
+            "email": "string",
+            "approved": "integer",
+            "role": "integer",
+            "created_at": "Timestamp",
+            "updated_at": "Timestamp"
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET users</code></p>
+<!-- END_89966bfb9ab533cc3249b91a9090d3dc -->
+<!-- START_5da5fc82b574fb975787032a8fdb66e6 -->
+<h2>Show</h2>
+<p>Display the specified User by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/user/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/user/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET user/{id}</code></p>
+<!-- END_5da5fc82b574fb975787032a8fdb66e6 -->
+<!-- START_3efbce72c5183a8fae61143a8bcdd44a -->
+<h2>Store</h2>
+<p>Create a new User.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/user" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/user");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST user</code></p>
+<!-- END_3efbce72c5183a8fae61143a8bcdd44a -->
+<!-- START_6df5775a997877107592d7839ce70310 -->
+<h2>Update</h2>
+<p>Edit properties of existing User.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/user/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/user/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT user/{id}</code></p>
+<!-- END_6df5775a997877107592d7839ce70310 -->
+<!-- START_b81b03c80aa59c476a5cd8e7e12a1d4e -->
+<h2>Destroy</h2>
+<p>Remove an User.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/user/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/user/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE user/{id}</code></p>
+<!-- END_b81b03c80aa59c476a5cd8e7e12a1d4e -->
+<h1>app version</h1>
+<p>APIs for managing apps versions</p>
+<!-- START_b11d848e3031bbd50554d0b8eab85ad4 -->
+<h2>Columns</h2>
+<p>Display the possible fields of AppVersion.</p>
+<p>These fields can also be used to filter the search.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/app_version/columns" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/app_version/columns");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET app_version/columns</code></p>
+<!-- END_b11d848e3031bbd50554d0b8eab85ad4 -->
+<!-- START_73f4102fa7022b15f443eac66e808537 -->
+<h2>Index</h2>
+<p>Display a listing of apps versions.</p>
+<p>To filter apps versions, add any of the AppVersion object properties to the querry ?{property}={value}</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/app_versions" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/app_versions");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET app_versions</code></p>
+<!-- END_73f4102fa7022b15f443eac66e808537 -->
+<!-- START_da9d1321bb91f2f23d56e95bc4317f5b -->
+<h2>Show</h2>
+<p>Display the specified AppVersion by {id}.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://apitndati.com/v001/public/app_version/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/app_version/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET app_version/{id}</code></p>
+<!-- END_da9d1321bb91f2f23d56e95bc4317f5b -->
+<!-- START_cc77505cd729f388325410d57082c315 -->
+<h2>Store</h2>
+<p>Create a new AppVersion.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://apitndati.com/v001/public/app_version" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/app_version");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST app_version</code></p>
+<!-- END_cc77505cd729f388325410d57082c315 -->
+<!-- START_e1030ae6805f8f7ef0e0201f80a16933 -->
+<h2>Update</h2>
+<p>Edit properties of existing AppVersion.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://apitndati.com/v001/public/app_version/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/app_version/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT app_version/{id}</code></p>
+<!-- END_e1030ae6805f8f7ef0e0201f80a16933 -->
+<!-- START_6758265b64a71a633954eeac75076094 -->
+<h2>Destroy</h2>
+<p>Remove an AppVersion.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://apitndati.com/v001/public/app_version/{id}" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://apitndati.com/v001/public/app_version/{id}");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer {token}",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE app_version/{id}</code></p>
+<!-- END_6758265b64a71a633954eeac75076094 -->
+      </div>
+      <div class="dark-box">
+                        <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                              </div>
+                </div>
+    </div>
+      </div>
+  </body>
+</html>
